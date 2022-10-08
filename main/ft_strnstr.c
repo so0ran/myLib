@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 13:59:35 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/07 13:52:52 by belkarto         ###   ########.fr       */
+/*   Created: 2022/10/08 13:59:07 by belkarto          #+#    #+#             */
+/*   Updated: 2022/10/08 18:26:55 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <stdio.h>
-#include <ctype.h>
 
-int main()
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-   char str[] = "brahim elkartouch yoo";
-   char str2[] = "brahim elkartouch yoo";
-   ft_memset(str,'$',7);
-   printf("%s\n", str);
-   memset(str2,'$',7);
-   printf("%s", str2);
+	size_t	i;
+	size_t	j;
+	char	*str;
 
-
-   return(0);
+	str = (char *)haystack;
+	i = 0;
+	while (needle[i] != '\0')
+		i++;
+	if (i == 0)
+		return (str);
+	i = 0;
+	j = 0;
+	while (i < len)
+	{
+		while (str[i] == needle[j])
+		{
+			if (needle[j +1] == '\0')
+				return (&str[i]);
+			j++;
+			i++;
+		}
+		i++;
+	}
+	return (NULL);
 }

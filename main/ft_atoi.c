@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 13:01:33 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/08 21:41:26 by belkarto         ###   ########.fr       */
+/*   Created: 2022/10/08 20:07:18 by belkarto          #+#    #+#             */
+/*   Updated: 2022/10/08 20:46:49 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include  "libft.h"
 
-char	*ft_strdup(const char *s1)
+int	ft_atoi(const char *str)
 {
-	char	*str;
-	int		i;
+	int	i;
+	int	res;
+	int	sign;
 
 	i = 0;
-	str = (char *) malloc(ft_strlen(s1) * sizeof(char));
-	while (s1[i])
+	res = 0;
+	sign = 1;
+	while ((str[i] <= 13 && str[i] >= 9) || str[i] == 32)
+		i++;
+	if (str[i] == '-')
 	{
-		str[i] = s1[i];
+		sign *= -1;
 		i++;
 	}
-	return (str);
+	while (str[i] <= '9' && str[i] >= '0')
+	{
+		res = (res * 10);
+		res += str[i] - '0';
+		i++;
+	}
+	return (res * sign);
 }

@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 13:01:33 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/08 21:41:26 by belkarto         ###   ########.fr       */
+/*   Created: 2022/10/08 19:51:42 by belkarto          #+#    #+#             */
+/*   Updated: 2022/10/08 20:30:02 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	char	*str;
-	int		i;
+	size_t	i;
+	size_t	dst_len;
+	size_t	src_len;
 
 	i = 0;
-	str = (char *) malloc(ft_strlen(s1) * sizeof(char));
-	while (s1[i])
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	if (dstsize < dst_len)
+		return (src_len);
+	while (i < src_len && i < dstsize - 1)
 	{
-		str[i] = s1[i];
+		dst[dst_len + i] = src[i];
 		i++;
 	}
-	return (str);
+	return (dst_len + src_len);
 }
