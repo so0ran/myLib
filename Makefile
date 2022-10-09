@@ -1,31 +1,30 @@
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
-NAME 	=	libft.a
-MAIN	= 	ft_memcmp.c ft_strchr.c \
-			ft_strrchr.c ft_bzero.c ft_isdigit.c \
-			ft_memcpy.c ft_strdup.c ft_tolower.c \
-			ft_isalnum.c ft_isprint.c ft_memmove.c \
-			ft_strlen.c ft_toupper.c ft_isalpha.c \
-			ft_memchr.c ft_memset.c ft_strncmp.c \
-			
+NAME	=	libft.a
+MAIN	=	myFunc/ft_atoi.c myFunc/ft_bzero.c myFunc/ft_calloc.c \
+			myFunc/ft_isalnum.c myFunc/ft_isalpha.c	myFunc/ft_isascii.c \
+			myFunc/ft_isdigit.c myFunc/ft_isprint.c	myFunc/ft_memchr.c \
+			myFunc/ft_memcmp.c myFunc/ft_memcpy.c myFunc/ft_memmove.c \
+			myFunc/ft_memset.c myFunc/ft_strchr.c myFunc/ft_strdup.c \
+			myFunc/ft_strlcat.c myFunc/ft_strlcpy.c myFunc/ft_strlen.c \
+			myFunc/ft_strncmp.c myFunc/ft_strnstr.c myFunc/ft_strrchr.c \
+			myFunc/ft_tolower.c myFunc/ft_toupper.c
 
-MAIN1= $(MAIN:.c=.o)
+OBJEC	= $(MAIN:.c=.o)
 
-.c.o:
-	$(CC) $(CFLAGS) -c $(MAIN) 
-	
-	#-o $(MAIN1)
 
-all: $(NAME)
+.c.o	:
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I.
 
-$(NAME): $(MAIN1)
-	ar rcs $(NAME) $(MAIN1)
+all		: $(NAME)
+
+$(NAME)	: $(OBJEC)
+	ar rcs $(NAME) $(OBJEC)
+
 clean:
-	rm -rf $(MAIN1)
+	rm -rf $(OBJEC)
 
 fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
-
-.PHONY: all clean fclean re
