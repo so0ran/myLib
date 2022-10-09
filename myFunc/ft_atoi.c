@@ -6,7 +6,7 @@
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 20:07:18 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/08 20:46:49 by belkarto         ###   ########.fr       */
+/*   Updated: 2022/10/09 20:06:35 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include  "libft.h"
@@ -27,6 +27,8 @@ int	ft_atoi(const char *str)
 		sign *= -1;
 		i++;
 	}
+	else if (str[i] == '+')
+		i++;
 	while (str[i] <= '9' && str[i] >= '0')
 	{
 		res = (res * 10);
