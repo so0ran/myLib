@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 14:27:01 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/11 18:24:00 by belkarto         ###   ########.fr       */
+/*   Created: 2022/10/10 11:06:56 by belkarto          #+#    #+#             */
+/*   Updated: 2022/10/13 11:23:07 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	char	*p_dst;
-	char	*p_src;
+	char	*str;
+	size_t		s_len;
+	size_t		i;
 
 	i = 0;
-	p_dst = dst;
-	p_src = (char *)src;
-	if (dst > src)
+	s_len = ft_strlen(s);
+	str = (char *)malloc(s_len * sizeof(char));
+	while (i < len && i + start < s_len && s[i])
 	{
-		while (len > 0)
-		{
-			p_dst[len - 1] = p_src[len - 1];
-			len--;
-		}
+		str[i] = s[i + start];
+		i++;
 	}
-	else
-		ft_memcpy(dst, src, len);
-	return (dst);
+	str[i] = '\0';
+	return (str);
 }

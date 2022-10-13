@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 14:27:01 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/11 18:24:00 by belkarto         ###   ########.fr       */
+/*   Created: 2022/10/12 14:40:11 by belkarto          #+#    #+#             */
+/*   Updated: 2022/10/13 09:56:44 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	i;
-	char	*p_dst;
-	char	*p_src;
+	char	*str;
+	int		len;
+	int		i;
 
 	i = 0;
-	p_dst = dst;
-	p_src = (char *)src;
-	if (dst > src)
+	len = ft_strlen(s);
+	str = (char *)malloc(len + 1);
+	if (!str)
+		return (NULL);
+	while (i < len)
 	{
-		while (len > 0)
-		{
-			p_dst[len - 1] = p_src[len - 1];
-			len--;
-		}
+		str[i] = (*f)(i, s[i]);
+		i++;
 	}
-	else
-		ft_memcpy(dst, src, len);
-	return (dst);
+	str[i] = '\0';
+	return (str);
 }
