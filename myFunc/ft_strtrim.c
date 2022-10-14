@@ -6,7 +6,7 @@
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:54:49 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/10 14:20:13 by belkarto         ###   ########.fr       */
+/*   Updated: 2022/10/13 14:21:46 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -25,6 +25,26 @@ static int	ft_checker(const char *set, int c)
 	return (0);
 }
 
+static int	alloc_counter(char const *s1, char const *set)
+{
+	int	counter;
+	int	i;
+
+	i = 0;
+	counter = 0;
+	while (s1[i])
+	{
+		if (ft_checker(set, s1[i]) == 1)
+			i++;
+		else
+		{
+			i++;
+			counter++;
+		}
+	}
+	return (counter);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
@@ -33,7 +53,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	i = 0;
 	j = 0;
-	str = (char *)malloc(ft_strlen(s1) * sizeof(char));
+	str = (char *)malloc((alloc_counter(s1, set) + 1) * sizeof(char));
 	while (s1[i])
 	{
 		if (ft_checker(set, s1[i]) == 1)
@@ -41,5 +61,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 		else
 			str[j++] = s1[i++];
 	}
+	str[j] = '\0';
 	return (str);
 }
