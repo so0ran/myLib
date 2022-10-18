@@ -6,7 +6,7 @@
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:21:06 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/10 14:21:38 by belkarto         ###   ########.fr       */
+/*   Updated: 2022/10/18 05:23:16 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -25,9 +25,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (str = ft_strdup(s1));
 	else
 	{
-		str = (char *)malloc((len_s1 + len_s2) * sizeof(char));
+		str = (char *)malloc((len_s1 + len_s2 + 1) * sizeof(char));
 		ft_memcpy(str, s1, len_s1);
-		ft_memcpy(str + len_s1, s2, len_s2);
+		ft_memcpy(str + len_s1, s2, len_s2 + 1);
 		return (str);
 	}
 }

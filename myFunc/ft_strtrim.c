@@ -6,7 +6,7 @@
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:54:49 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/13 14:21:46 by belkarto         ###   ########.fr       */
+/*   Updated: 2022/10/18 16:52:17 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -25,42 +25,41 @@ static int	ft_checker(const char *set, int c)
 	return (0);
 }
 
-static int	alloc_counter(char const *s1, char const *set)
+static int	ft_begi(const char *s1, const char *set)
 {
-	int	counter;
 	int	i;
 
 	i = 0;
-	counter = 0;
-	while (s1[i])
+	while (ft_checker(set, s1[i]) == 1)
+		i++;
+	return (i);
+}
+
+static int	ft_end(const char *s1, const char *set)
+{
+	int	i;
+	int	end;
+
+	end = 0;
+	i = ft_strlen(s1) - 1;
+	while (ft_checker(set, s1[i]) == 1)
 	{
-		if (ft_checker(set, s1[i]) == 1)
-			i++;
-		else
-		{
-			i++;
-			counter++;
-		}
+		i--;
+		end++;
 	}
-	return (counter);
+	return (end);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
-	size_t	i;
-	size_t	j;
+	size_t	begi;
+	size_t	last;
+	int		str_len;
 
-	i = 0;
-	j = 0;
-	str = (char *)malloc((alloc_counter(s1, set) + 1) * sizeof(char));
-	while (s1[i])
-	{
-		if (ft_checker(set, s1[i]) == 1)
-			i++;
-		else
-			str[j++] = s1[i++];
-	}
-	str[j] = '\0';
+	begi = ft_begi(s1, set);
+	last = ft_end(s1, set);
+	str_len = ft_strlen(s1) - begi - last;
+	str = ft_substr(s1, begi, str_len);
 	return (str);
 }
