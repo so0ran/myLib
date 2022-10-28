@@ -6,7 +6,7 @@
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 10:20:24 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/13 10:09:22 by belkarto         ###   ########.fr       */
+/*   Updated: 2022/10/24 11:09:28 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -16,7 +16,7 @@ static int	number_count(long int n)
 	int	i;
 
 	i = 0;
-	if (n < 10 && n >= 0)
+	if (n <= 9 && n >= 0)
 		return (1);
 	while (n > 0)
 	{
@@ -63,12 +63,14 @@ char	*ft_itoa(int n)
 		i = number_count(nbr);
 	if (n < 0)
 	{
-		str = (char *)ft_calloc(i + 2, sizeof(char));
+		str = (char *)ft_calloc((i + 2), sizeof(char));
+		if (!str)
+			return (NULL);
 		string_of_number(str, i, nbr);
 	}
 	else
 	{
-		str = (char *)ft_calloc(i + 1, sizeof(char));
+		str = (char *)ft_calloc((i + 1), sizeof(char));
 		string_of_number(str, i, nbr);
 	}
 	return (str);

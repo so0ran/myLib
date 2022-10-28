@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 19:51:42 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/09 20:03:33 by belkarto         ###   ########.fr       */
+/*   Created: 2022/10/06 16:03:25 by belkarto          #+#    #+#             */
+/*   Updated: 2022/10/24 04:37:32 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
-	size_t	j;
-	size_t	len_des;
-	size_t	len_src;
+	int		diff;
 
 	i = 0;
-	j = 0;
-	len_des = ft_strlen(dst);
-	len_src = ft_strlen(src);
-	if (dstsize == 0 || dstsize <= len_des)
-		return (len_src + dstsize);
-	while (src[j] != '\0' && j < dstsize - len_des - 1)
+	diff = 0;
+	if (n == 0)
+		return (0);
+	while ((s1[i] || s2[i]) && i < n)
 	{
-		dst[i + len_des] = src[j];
+		diff = (unsigned char)s1[i] - (unsigned char)s2[i];
+		if (diff != 0)
+			return (diff);
 		i++;
-		j++;
 	}
-	dst[i + len_des] = '\0';
-	return (len_des + len_src);
+	return (diff);
 }

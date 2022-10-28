@@ -6,7 +6,7 @@
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:23:21 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/14 21:29:35 by belkarto         ###   ########.fr       */
+/*   Updated: 2022/10/24 05:03:21 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -18,6 +18,8 @@ static int	alloc_count(const char *str, char c)
 
 	counter = 0;
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i])
 	{
 		if (str[i] == c)
@@ -78,7 +80,7 @@ char	**ft_split(char const *s, char c)
 	int		next;
 
 	str = (char **)ft_calloc((alloc_count(s, c) + 1), sizeof(char *));
-	if (!str)
+	if (!str || !s)
 		return (0);
 	k = 0;
 	i = 0;

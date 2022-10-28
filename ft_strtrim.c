@@ -6,7 +6,7 @@
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:54:49 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/18 16:52:17 by belkarto         ###   ########.fr       */
+/*   Updated: 2022/10/24 12:15:53 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -57,6 +57,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	last;
 	int		str_len;
 
+	if (!s1 || !set)
+		return (0);
 	begi = ft_begi(s1, set);
 	last = ft_end(s1, set);
 	str_len = ft_strlen(s1) - begi - last;

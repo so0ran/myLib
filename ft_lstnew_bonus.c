@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 14:27:01 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/11 18:24:00 by belkarto         ###   ########.fr       */
+/*   Created: 2022/10/16 17:21:21 by belkarto          #+#    #+#             */
+/*   Updated: 2022/10/21 14:43:46 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+t_list	*ft_lstnew(void *content)
 {
-	size_t	i;
-	char	*p_dst;
-	char	*p_src;
+	t_list	*head;
 
-	i = 0;
-	p_dst = dst;
-	p_src = (char *)src;
-	if (dst > src)
-	{
-		while (len > 0)
-		{
-			p_dst[len - 1] = p_src[len - 1];
-			len--;
-		}
-	}
-	else
-		ft_memcpy(dst, src, len);
-	return (dst);
+	head = (t_list *)malloc(sizeof(t_list));
+	if (!head)
+		return (NULL);
+	head -> content = content;
+	head -> next = NULL;
+	return (head);
 }

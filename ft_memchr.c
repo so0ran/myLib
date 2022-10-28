@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 20:07:18 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/09 20:06:35 by belkarto         ###   ########.fr       */
+/*   Created: 2022/10/06 16:44:31 by belkarto          #+#    #+#             */
+/*   Updated: 2022/10/18 21:00:04 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include  "libft.h"
+#include "libft.h"
 
-int	ft_atoi(const char *str)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int	i;
-	int	res;
-	int	sign;
+	size_t			i;
+	unsigned char	*str;
 
+	str = (char unsigned *)s;
 	i = 0;
-	res = 0;
-	sign = 1;
-	while ((str[i] <= 13 && str[i] >= 9) || str[i] == 32)
-		i++;
-	if (str[i] == '-')
+	while (i < n)
 	{
-		sign *= -1;
+		if (str[i] == (unsigned char)c)
+			return ((void *)&str[i]);
 		i++;
 	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] <= '9' && str[i] >= '0')
-	{
-		res = (res * 10);
-		res += str[i] - '0';
-		i++;
-	}
-	return (res * sign);
+	return (NULL);
 }
