@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 10:29:41 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/29 18:56:11 by belkarto         ###   ########.fr       */
+/*   Created: 2022/10/28 15:32:46 by belkarto          #+#    #+#             */
+/*   Updated: 2022/10/28 15:42:51 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-size_t	ft_putstr_fd(char *s, int fd)
+int	ft_intlen(unsigned long nb)
 {
-	if (s == NULL)
-		return (0);
-	return (write(fd, s, ft_strlen(s)));
+	int	len;
+
+	len = 0;
+	if (nb >= 0 && nb <= 9)
+		return (1);
+	while (nb > 0)
+	{
+		nb /= 10;
+		len++;
+	}
+	return (len);
 }

@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 10:29:41 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/29 18:56:11 by belkarto         ###   ########.fr       */
+/*   Created: 2022/10/28 16:18:25 by belkarto          #+#    #+#             */
+/*   Updated: 2022/10/28 16:48:43 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-
-size_t	ft_putstr_fd(char *s, int fd)
+void	ft_strrev(char *str)
 {
-	if (s == NULL)
-		return (0);
-	return (write(fd, s, ft_strlen(s)));
+	int		len;
+	int		i;
+	char	c;
+
+	len = ft_strlen(str) - 1;
+	i = 0;
+	while (i < len)
+	{
+		c = str[i];
+		str[i++] = str[len];
+		str[len--] = c;
+	}
 }
