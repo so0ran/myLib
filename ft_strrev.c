@@ -6,10 +6,11 @@
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 16:18:25 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/28 16:48:43 by belkarto         ###   ########.fr       */
+/*   Updated: 2022/10/30 04:10:18 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+
 void	ft_strrev(char *str)
 {
 	int		len;
