@@ -6,12 +6,12 @@
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 15:49:52 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/29 19:39:23 by belkarto         ###   ########.fr       */
+/*   Updated: 2022/10/31 08:13:12 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-static char	*ft_tohex(unsigned long nb, int cap)
+static char	*ft_hex(unsigned long nb, int cap)
 {
 	char	*hex;
 	char	*arr;
@@ -34,14 +34,16 @@ static char	*ft_tohex(unsigned long nb, int cap)
 	return (arr);
 }
 
-int	ft_puthex(unsigned long nb, int cap)
+char	*ft_tohex(unsigned long nb, int cap)
 {
 	char	*arr;
-	int		i;
+	char	*ptr;
 
-	arr = ft_tohex(nb, cap);
+	if (nb == 0)
+		return (ft_strdup("0"));
+	arr = ft_hex(nb, cap);
 	ft_strrev(arr);
-	i = ft_putstr_fd(arr, 1);
+	ptr = ft_strdup(arr);
 	free(arr);
-	return (i);
+	return (ptr);
 }

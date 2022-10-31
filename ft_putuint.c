@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putuint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 10:38:03 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/31 17:54:05 by belkarto         ###   ########.fr       */
+/*   Created: 2022/10/31 17:32:24 by belkarto          #+#    #+#             */
+/*   Updated: 2022/10/31 17:44:13 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-int	ft_putnbr_fd(int n, int fd)
+int	ft_putuint(unsigned int n)
 {
-	long int	nbr;
-	int			i;
-
-	i = 0;
-	nbr = n;
-	if (nbr < 0)
-	{
-		i = 1;
-		ft_putchar_fd('-', fd);
-		nbr *= -1;
-	}
-	if (nbr > 9)
-	{
-		ft_putnbr_fd(nbr / 10, fd);
-		ft_putchar_fd(nbr % 10 + 48, fd);
-	}
+	if (n < 10)
+		ft_putchar_fd(n + 48, 1);
 	else
-		ft_putchar_fd(nbr % 10 + 48, fd);
-	i += ft_intlen(nbr);
-	return (i);
+	{
+		ft_putuint(n / 10);
+		ft_putchar_fd(n % 10 + 48, 1);
+	}
+	return (ft_intlen(n));
 }

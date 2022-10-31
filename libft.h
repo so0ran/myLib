@@ -6,7 +6,7 @@
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 15:24:46 by belkarto          #+#    #+#             */
-/*   Updated: 2022/10/29 19:09:47 by belkarto         ###   ########.fr       */
+/*   Updated: 2022/10/31 17:42:24 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,9 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_putchar_fd(char c, int fd);
 size_t	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
-int		ft_puthex(unsigned long nb, int cap);
+int		ft_putnbr_fd(int n, int fd);
+char	*ft_tohex(unsigned long nb, int cap);
+int		ft_putuint(unsigned int n);
 
 //bonus
 
