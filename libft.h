@@ -6,7 +6,7 @@
 /*   By: belkarto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 15:24:46 by belkarto          #+#    #+#             */
-/*   Updated: 2022/11/03 18:40:20 by belkarto         ###   ########.fr       */
+/*   Updated: 2022/11/29 18:04:05 by belkarto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 // struct
 
@@ -25,8 +28,7 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
-
-//part 1
+//functions
 
 int		ft_isalpha(int c);
 int		ft_isalnum(int c);
@@ -53,9 +55,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
-
-//part2
-
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
@@ -69,9 +68,6 @@ void	ft_putendl_fd(char *s, int fd);
 int		ft_putnbr_fd(int n, int fd);
 char	*ft_tohex(unsigned long nb, int cap);
 int		ft_putuint(unsigned int n);
-
-//bonus
-
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
@@ -81,6 +77,9 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
+int		ft_putformat(const char *str, va_list args);
 int		ft_printf(const char *str, ...);
+char	*ft_strdup_gnl(char *s1);
+char	*ft_strjoin_gnl(char *s1, char const *s2);
+char	*get_next_line(int fd);
 #endif

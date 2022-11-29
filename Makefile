@@ -17,7 +17,9 @@ MAIN		=	ft_atoi.c		ft_bzero.c		ft_calloc.c \
 				ft_lstlast.c				ft_lstadd_back.c \
 				ft_lstdelone.c			ft_lstclear.c \
 				ft_lstiter.c				ft_lstmap.c \
-				ft_strrev.c	ft_puthex.c	ft_putuint.c ft_printf.c
+				ft_strrev.c	ft_puthex.c	ft_putuint.c \
+				ft_putformat.c ft_printf.c get_next_line_utils.c \
+				get_next_line.c
 
 OBJEC		= 	$(MAIN:.c=.o)
 
